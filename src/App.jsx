@@ -26,15 +26,14 @@ function App() {
             }
             return item
           })
-          
+          setTask({name:''})
           setTaskList(newTaskList)
-          e.target.reset()
           setBtn('Submit')
           setChange(false)
           return
      }
       setTaskList([...taskList, task])
-      e.target.reset();
+      setTask({ name: '' })
       setBtn('Submit')
       setChange(false)
   }
@@ -43,8 +42,13 @@ function App() {
      setTask(item)
      setBtn('Edit')
    }
-   const handleDelete = () => {
-     console.log('delete')
+   const handleDelete = (id) => {
+     setBtn('Submit')
+     const newList = taskList.filter((item)=>item.id!==id)
+     setTaskList(newList)
+     setChange(true)
+    
+     setTask({name:""})
    }
 
    const handleChange = (e)=>{
@@ -62,19 +66,20 @@ function App() {
 
   return (
     <div className="wrapper p-1">
-      <main className="container d-grid  bg-danger rounded-3 mt-5 mb-1">
+      <main className="container d-grid  bg-danger rounded-3 mt-5 mb-1 ">
         <form onSubmit={handleSubmit}>
-          <div className="input-group mb-3">
+          <div className="input-group mb-3 ">
             <input
               type="text"
-              className="form-control"
+              className="form-control "
               placeholder="Task"
               required={true}
               name="name"
               value={task.name}
               onChange={handleChange}
+
             />
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary flex-grow-2 " type="submit">
               {btn}
             </button>
           </div>
