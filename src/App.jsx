@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="wrapper p-1">
-      <main className="container d-grid  bg-danger rounded-3 mt-5 mb-1 ">
+      <main className="d-grid  bg-danger rounded-3 mt-5 mb-1 ">
         <form onSubmit={handleSubmit}>
           <div className="input-group mb-3 ">
             <input
